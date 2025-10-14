@@ -12,6 +12,7 @@ This will ensure that you have:
 
 - all the development plugins installed
 - the correct java version
+- you have git installed
 
 and can develop on linux and windows alike.
 
