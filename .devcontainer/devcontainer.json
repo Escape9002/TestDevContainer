@@ -13,7 +13,8 @@
       "extensions": [
         "vscjava.vscode-java-pack",
         "Pivotal.vscode-spring-boot",
-        "SonarSource.sonarlint-vscode"
+        "SonarSource.sonarlint-vscode",
+        "asciidoctor.asciidoctor-vscode"
       ],
       // Settings object for VS Code
       "settings": {

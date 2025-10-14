@@ -1,0 +1,20 @@
+# I bet you can run this
+
+To make use of the provided devcontainer, please follow the installation procedures for docker. 
+
+- https://docs.docker.com/engine/install/
+
+Then simply open this project in VSCode, Theia or Codium.
+
+---
+
+This will ensure that you have:
+
+- all the development plugins installed
+- the correct java version
+
+and can develop on linux and windows alike.
+
+## Why not simply POM and local java?
+Because I wanted to try new things. Its only a suggestion to use this thing here.
+It shouldnt even stop you from using stuff like InteliJ and the likes "normally", its just a nice feature for people hopping projects and PC's all day long.
