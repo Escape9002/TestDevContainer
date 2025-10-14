@@ -1,0 +1,35 @@
+{
+  "name": "Java Spring Boot Guestbook",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  // This is the default behavior, so it's not strictly necessary,
+  // but it's perfectly fine to leave it for clarity.
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	
+  "customizations": {
+    "vscode": {
+      // Array of extensions to install
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "Pivotal.vscode-spring-boot",
+        "SonarSource.sonarlint-vscode"
+      ],
+      // Settings object for VS Code
+      "settings": {
+        "java.compile.nullAnalysis.mode": "automatic"
+      }
+    }
+  },
+
+  "forwardPorts": [
+    8080
+  ],
+
+  // All post-create commands combined into one line
+  "postCreateCommand": "chmod +x ./mvnw && ./mvnw clean test",
+
+  "postStartCommand": "./mvnw spring-boot:run",
+  
+  "remoteUser": "vscode"
+}
