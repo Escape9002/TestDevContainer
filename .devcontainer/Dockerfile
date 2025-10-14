@@ -9,7 +9,8 @@ RUN apk update && apk add --no-cache \
     bash \
     git \
     curl \
-    wget
+    wget \
+    openssh
 
 # Install OpenJDK 21 (LTS) and the latest Node.js + npm
 RUN apk add --no-cache \
