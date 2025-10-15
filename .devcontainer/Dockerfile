@@ -10,7 +10,9 @@ RUN apk update && apk add --no-cache \
     git \
     curl \
     wget \
-    openssh
+    openssh \
+    dos2unix \
+    sudo     
 
 # Install OpenJDK 21 (LTS) and the latest Node.js + npm
 RUN apk add --no-cache \
@@ -28,12 +30,13 @@ RUN node -v
 RUN npm -v
 
 # --- Dev Container Specifics ---
-# Create a non-root user 'vscode' for better security
+# Create a non-root user 'vscode' for better security AND grant sudo access
 RUN addgroup -g 1000 vscode && \
-    adduser -u 1000 -G vscode -h /home/vscode -s /bin/bash -D vscode
+    adduser -u 1000 -G vscode -h /home/vscode -s /bin/bash -D vscode && \
+    echo "vscode ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/vscode # <-- GRANT SUDO
 
 # Switch to the non-root user
 USER vscode
 
-# Set the working directory
-WORKDIR /home/vscode
+# Set the working directory to where the code will be mounted
+WORKDIR /workspaces
