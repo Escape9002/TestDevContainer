@@ -11,7 +11,8 @@
         "vscjava.vscode-java-pack",
         "Pivotal.vscode-spring-boot",
         "SonarSource.sonarlint-vscode",
-        "asciidoctor.asciidoctor-vscode"
+        "asciidoctor.asciidoctor-vscode",
+        "redhat.vscode-xml"
       ],
       "settings": {
         "java.compile.nullAnalysis.mode": "automatic"
@@ -24,7 +25,7 @@
   ],
 
   // Take ownership, then fix line endings, then execute
-  "postCreateCommand": "sudo chown -R vscode:vscode . && dos2unix ./mvnw && chmod +x ./mvnw && ./mvnw clean test",
+  "postCreateCommand": "sudo chown -R vscode:vscode . && dos2unix ./mvnw && chmod +x ./mvnw && ./mvnw install && ./mvnw validate && ./mvnw test",
 
   // It's good practice to ensure line endings are correct here too
   "postStartCommand": "dos2unix ./mvnw && ./mvnw spring-boot:run",
