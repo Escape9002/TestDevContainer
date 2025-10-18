@@ -11,7 +11,9 @@
         "vscjava.vscode-java-pack",
         "Pivotal.vscode-spring-boot",
         "SonarSource.sonarlint-vscode",
-        "asciidoctor.asciidoctor-vscode"
+        "asciidoctor.asciidoctor-vscode",
+        "madhavd1.javadoc-tools",
+        "redhat.vscode-xml"
       ],
       "settings": {
         "java.compile.nullAnalysis.mode": "automatic"
@@ -23,10 +25,11 @@
     8080
   ],
 
-  // Take ownership, then fix line endings, then execute
-  "postCreateCommand": "sudo chown -R vscode:vscode . && dos2unix ./mvnw && chmod +x ./mvnw && ./mvnw clean test",
+  // Since we can clone on windows and will run under linux, we have to fix the flags on the scripts we want to run.
+  // Then download the dependencies, run a first install and the tests for the application.
+  "postCreateCommand": "sudo chown -R vscode:vscode . && dos2unix ./mvnw && chmod +x ./mvnw dependency:resolve && ./mvnw install test",
 
-  // It's good practice to ensure line endings are correct here too
+  // after the container started and all dependencies are resolved, lets start directly into the development server
   "postStartCommand": "dos2unix ./mvnw && ./mvnw spring-boot:run",
   
   "remoteUser": "vscode"
