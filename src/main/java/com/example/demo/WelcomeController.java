@@ -1,23 +1,26 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import java.util.Optional;
 
-@RestController
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
 public class WelcomeController {
-    
-    @RequestMapping("/welcome")
-    String welcome() {
-        return "Hello there";
-    }
 
-    @RequestMapping("/")
-    String index() {
-        return "<html> <h1> This is the index of this wonderful thing </h1> <!html>";
-    }
-
-    @RequestMapping("/index.html")
+    @GetMapping("/")
     String hell() {
-        return "<html> <h1> You have no files here! </h1> <!html>";
+        return "index";
+    }
+
+    @GetMapping("/hello")
+    String myMethod(@RequestParam Optional<String> name, Model model) {
+
+        model.addAttribute("name", name.orElse("World"));
+
+        return "hello";
     }
 }
